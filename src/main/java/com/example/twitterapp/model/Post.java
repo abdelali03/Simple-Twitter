@@ -16,7 +16,7 @@ public class Post {
     @JoinColumn(name = "user_id")
     private User user;
 
-    // Getters and Setters
+
 
     public Long getId() {
         return id;
@@ -49,4 +49,6 @@ public class Post {
     public void setUser(User user) {
         this.user = user;
     }
+
+
 }

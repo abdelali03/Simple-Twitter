@@ -11,8 +11,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 @Controller
 public class PostController {
@@ -29,8 +34,9 @@ public class PostController {
     public String home(Model model) {
         List<Post> posts = postService.findAll();
         model.addAttribute("posts", posts);
-        return "home";
+        return "home"; // Make sure this matches your Thymeleaf template name
     }
+
 
     @GetMapping("/add")
     public String showAddPostForm(Model model) {
@@ -39,12 +45,16 @@ public class PostController {
     }
 
     @PostMapping("/add")
-    public String addPost(@ModelAttribute Post post) {
+    public String addPost(@ModelAttribute Post post) throws IOException {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         CustomUserDetails user = (CustomUserDetails) auth.getPrincipal();
         var existingUser = userService.findByUsername(user.getUsername());
         post.setUser(existingUser);
+
+
+
         postService.save(post);
         return "redirect:/";
     }
+
 }

@@ -7,96 +7,99 @@
     <title>Login</title>
     <style>
         body {
-            background: url('/images/background.jpg') no-repeat center center fixed;
-            background-size: cover;
-            font-family: 'Arial', sans-serif;
+            background-color: #f5f8fa;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            color: #ffffff;
         }
 
         .form-container {
-            background-color: rgba(0, 0, 0, 0.6);
-            width: 400px;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 400px;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
 
         h2 {
-            color: #ffffff;
-            text-align: center;
+            color: #1da1f2;
             margin-bottom: 20px;
-            font-size: 24px;
+            font-size: 26px;
         }
 
         label {
             display: block;
             margin-bottom: 8px;
-            color: #ffffff;
+            font-size: 14px;
+            color: #657786;
+            text-align: left;
         }
 
         input {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             margin-bottom: 16px;
-            border: 1px solid #444;
-            border-radius: 4px;
-            background-color: #333;
-            color: #ffffff;
-            box-sizing: border-box;
+            border: 1px solid #e1e8ed;
+            border-radius: 6px;
+            background-color: #f5f8fa;
+            color: #14171a;
+            font-size: 16px;
         }
 
         input::placeholder {
-            color: #ccc;
+            color: #aab8c2;
         }
 
         button {
-            background-color: #299d00;
+            background-color: #1da1f2;
             color: #ffffff;
-            padding: 10px 20px;
+            padding: 10px;
             border: none;
-            border-radius: 4px;
+            border-radius: 25px;
             cursor: pointer;
-            font-weight: bold;
             width: 100%;
             font-size: 16px;
+            font-weight: bold;
             transition: background-color 0.3s;
         }
 
         button:hover {
-            background-color: #267a00;
+            background-color: #1991db;
         }
 
         .form-footer {
-            text-align: center;
             margin-top: 20px;
-            color: #ccc;
+            color: #657786;
+            font-size: 14px;
         }
 
         .form-footer a {
-            color: #299d00;
+            color: #1da1f2;
             text-decoration: none;
-            font-weight: bold;
         }
 
         .form-footer a:hover {
-            color: #ffffff;
             text-decoration: underline;
         }
 
         .error-message,
         .logout-message {
-            background-color: rgba(255, 0, 0, 0.7);
+            background-color: rgba(255, 0, 0, 0.8);
             color: #ffffff;
             padding: 10px;
-            border-radius: 3px;
-            text-align: center;
+            border-radius: 6px;
             margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .logout-message {
+            background-color: rgba(40, 167, 69, 0.8);
         }
     </style>
 </head>
@@ -120,17 +123,17 @@
         <h2>Login</h2>
         <form th:action="@{/login}" method="post" role="form" th:object="${user}">
 
-            <label for="username">Username:</label>
+            <label for="username">Username</label>
             <input th:field="*{username}" type="text" id="username" name="username"
-                   placeholder="Enter your Username" required>
+                   placeholder="Enter your username" required>
 
-            <label for="password">Password:</label>
+            <label for="password">Password</label>
             <input th:field="*{password}" type="password" id="password" name="password"
-                   placeholder="Enter your Password" required>
+                   placeholder="Enter your password" required>
 
             <button type="submit">Login</button>
         </form>
-        <p class="form-footer">Don't have an account? <a th:href="@{/register}">Register</a> here.</p>
+        <p class="form-footer">Don't have an account? <a th:href="@{/register}">Register</a></p>
     </div>
 </div>
 </body>
